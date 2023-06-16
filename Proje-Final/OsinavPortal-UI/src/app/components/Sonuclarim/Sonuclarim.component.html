@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="flex-satir"style="justify-content: space-around;flex-wrap:wrap;" >
+    <div class="sorular" *ngFor="let sinav of sinavlar">
+      <mat-card class="soru">
+        <mat-card-header style="width: 100%;">
+          
+              <mat-card-title>{{sinav.sinavAdi}}</mat-card-title>
+              <mat-card-subtitle>{{DersById(sinav)}} </mat-card-subtitle>
+              <mat-card-subtitle>Soru Sayısı: {{sinav.soruSayisi}}</mat-card-subtitle>
+              <mat-card-subtitle>Sınav Süresi: {{sinav.sinavSuresi}} dk</mat-card-subtitle>
+
+        </mat-card-header>
+        <mat-card-content style="margin-top: 2%;">
+          
+          <div ><h4><strong>Doğru Sayısı : </strong> {{sinav.dSay}}</h4></div>
+          <div ><h4><strong>Yanlış Sayısı : </strong> {{sinav.ySay}}</h4></div>
+          <div ><h4><strong>Boş Sayısı : </strong> {{sinav.bSay}}</h4></div>
+          
+          
+         <div><h4><strong>Puanınız : </strong></h4> <h4 style="color: blueviolet;"> {{sinav.puan}}</h4></div>
+        </mat-card-content>
+        
+      </mat-card>
+    </div>
+  </div>
+</div>

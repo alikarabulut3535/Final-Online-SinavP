@@ -1,0 +1,33 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.renk:hover{
+  transition: all 0.3s ease-in-out;
+  background-color: #ffd740;
+  color: white;
+}
+.content-body{
+  min-height: 100%;
+  padding: 3% 1rem;
+  background: #ffd6401f;
+  display: block;
+}

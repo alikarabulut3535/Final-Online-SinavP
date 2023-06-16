@@ -1,0 +1,66 @@
+<div class="container">&nbsp;
+  <div class="flex-satir">
+    <h1><strong>Sınavlar</strong></h1>
+  </div> &nbsp;
+  <div class="flex-satir">
+    
+    <button mat-fab color="primary" matTooltip="Derslerim" [routerLink]="['/derslerim']" style="margin-bottom: 3%">
+      <mat-icon aria-label="label">arrow_back</mat-icon>
+    </button>
+    
+    <mat-form-field style="width: 80%;" appearance="outline">
+      <mat-label>Ders Seçiniz</mat-label>
+      <mat-select placeholder="Ders Seçiniz" (selectionChange)="DersSec($event.value)" >
+        <mat-option [value]="ders.dersBilgi" *ngFor="let ders of uyeDersler">{{ders.dersBilgi.dersAdi}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="flex-satir">
+    <h3 style="color: #f44336;" *ngIf="sinavlar?.length==0"><strong>UYARI :</strong>  Henüz Sınav Eklenmedi!</h3>
+    <h3 style="color: #f44336;" *ngIf="dataSource==undefined"><strong>UYARI :</strong> Önce Ders Seçiniz!</h3>
+  </div>
+  <div class="flex-satir" *ngIf="!secDers"><span style="color: #f44336;"><strong>Uyrarı: </strong> Önce Ders Seçiniz!</span></div>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="secDers">
+      <ng-container matColumnDef="sinavAdi">
+        <mat-header-cell *matHeaderCellDef> Sınav Adı
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.sinavAdi}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sinavSuresi">
+        <mat-header-cell *matHeaderCellDef> Sınav Süresi
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.sinavSuresi}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="sinavDersId">
+        <mat-header-cell *matHeaderCellDef> Ders
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{secDers.dersAdi}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="soruSayisi">
+        <mat-header-cell *matHeaderCellDef> Soru Sayısı
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.soruSayisi}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="islemler">
+        <mat-header-cell *matHeaderCellDef> İşlemler
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> 
+          <button mat-icon-button matTooltip="Sınava Gir" color="primary" *ngIf="!kayit.sinavBayrak" (click)="Onay(kayit.sinavId)"  >
+            <mat-icon aria-label="label">read_more</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Sonuçlarım" style="color: green;" *ngIf="kayit.sinavBayrak" [routerLink]="['/sonuclarim']"  >
+            <mat-icon aria-label="label">assignment_turned_in</mat-icon>
+          </button>
+          
+        </mat-cell>
+      </ng-container>
+    
+      
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+
+
+</div>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="Ders">
+      <EntityTypeMapping TypeName="Database1Model.Ders">
+        <MappingFragment StoreEntitySet="Ders">
+          <ScalarProperty Name="dersId" ColumnName="dersId" />
+          <ScalarProperty Name="dersAdi" ColumnName="dersAdi" />
+          <ScalarProperty Name="dersKodu" ColumnName="dersKodu" />
+          <ScalarProperty Name="dersKredi" ColumnName="dersKredi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Secenek">
+      <EntityTypeMapping TypeName="Database1Model.Secenek">
+        <MappingFragment StoreEntitySet="Secenek">
+          <ScalarProperty Name="secenekId" ColumnName="secenekId" />
+          <ScalarProperty Name="secenekText" ColumnName="secenekText" />
+          <ScalarProperty Name="cevap" ColumnName="cevap" />
+          <ScalarProperty Name="secSoruId" ColumnName="secSoruId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sinav">
+      <EntityTypeMapping TypeName="Database1Model.Sinav">
+        <MappingFragment StoreEntitySet="Sinav">
+          <ScalarProperty Name="sinavId" ColumnName="sinavId" />
+          <ScalarProperty Name="sinavAdi" ColumnName="sinavAdi" />
+          <ScalarProperty Name="sinavSuresi" ColumnName="sinavSuresi" />
+          <ScalarProperty Name="sinavDersId" ColumnName="sinavDersId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soru">
+      <EntityTypeMapping TypeName="Database1Model.Soru">
+        <MappingFragment StoreEntitySet="Soru">
+          <ScalarProperty Name="soruId" ColumnName="soruId" />
+          <ScalarProperty Name="soruText" ColumnName="soruText" />
+          <ScalarProperty Name="soruSinavId" ColumnName="soruSinavId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uye">
+      <EntityTypeMapping TypeName="Database1Model.Uye">
+        <MappingFragment StoreEntitySet="Uye">
+          <ScalarProperty Name="uyeId" ColumnName="uyeId" />
+          <ScalarProperty Name="adsoyad" ColumnName="adsoyad" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UyeCevap">
+      <EntityTypeMapping TypeName="Database1Model.UyeCevap">
+        <MappingFragment StoreEntitySet="UyeCevap">
+          <ScalarProperty Name="uyeCevapId" ColumnName="uyeCevapId" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+          <ScalarProperty Name="secId" ColumnName="secId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UyeDers">
+      <EntityTypeMapping TypeName="Database1Model.UyeDers">
+        <MappingFragment StoreEntitySet="UyeDers">
+          <ScalarProperty Name="uyedersId" ColumnName="uyedersId" />
+          <ScalarProperty Name="dId" ColumnName="dId" />
+          <ScalarProperty Name="uId" ColumnName="uId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

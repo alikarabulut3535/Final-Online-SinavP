@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>Üye Listesi</h1>
+    <h3><b>Ders Adı :</b> {{secDers?.dersAdi}}</h3>
+    <h3><b>Ders Kodu :</b> {{secDers?.dersKodu}}</h3>
+    <h3><b>Ders Kredi :</b> {{secDers?.dersKredi}}</h3>
+  
+    <button mat-fab color="primary" matTooltip="Ders Listesi" [routerLink]="['/ders']" style="margin: 2%;">
+      <mat-icon aria-label="label">arrow_back</mat-icon>
+    </button>
+  
+      
+    <button mat-fab color="accent" matTooltip="Uye Ekle" (click)="Ekle()">
+      <mat-icon aria-label="label">person_add</mat-icon>
+    </button> 
+
+    <h3 style="color: #f44336;" *ngIf="uyeDersler?.length==0"><strong>UYARI :</strong>  Henüz Üye Eklenmedi!</h3>
+  
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="adsoyad">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Ad Soyad
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.uyeBilgi.adsoyad}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="mail">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Mail
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit"> {{kayit.uyeBilgi.mail}} </mat-cell>
+      </ng-container>
+      
+      <ng-container matColumnDef="islemler">
+        <mat-header-cell *matHeaderCellDef > İşlemler
+        </mat-header-cell>
+        <mat-cell *matCellDef="let kayit">
+          
+          <button mat-icon-button matTooltip="Dersten Üyeui Sil" (click)="Sil(kayit)">
+            <mat-icon aria-label="label" color="warn">person_remove</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+    
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  
+  </div>

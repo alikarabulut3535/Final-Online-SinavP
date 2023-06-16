@@ -1,0 +1,42 @@
+<div hidden>
+    <button mat-raised-button color="primary" (click)="AlertAc(true)">Alert Test Olumlu</button>
+    <button mat-raised-button color="warn" (click)="AlertAc(false)" style="margin-left: 2%;">Alert Test Olumsuz</button>
+    <button mat-raised-button color="accent" (click)="ConfirmAc()" style="margin-left: 2%;">Silme onayı test</button>
+</div>
+
+<div class="container" *ngIf="Admin=='Admin'">
+    <div class="container" style="margin-top:5%">
+    <div class="flex-satir" >
+        <div class="flex-sutun" style="flex:2;justify-content: space-between; align-items: center;">
+            <h1> <strong style="color: #4c00ff;">{{adsoyad}}</strong> <strong>, Geleceğe İmzanı At, Bilginle Yarışa Hazır Ol !</strong> </h1>
+            <div >
+                <p style="font-size: 24px;line-height: 2rem;"> En kapsamlı sınav deneyimi için tasarlanmış <strong style="color: #4c00ff;">online</strong> sınav portalımızla, kolay erişim,  <strong style="color: #4c00ff;">güvenilirlik</strong>
+                    ve detaylı sonuçlar bir arada! Sınavlarınızı <strong style="color: #4c00ff;">online</strong>  dünyada <strong style="color: #4c00ff;">başarıya</strong>dönüştürmek için doğru adrestesiniz.</p>
+            </div>
+            
+        </div>
+        <div class="flex-sutun" style="max-width: 600px;flex:1;">
+            <img src="../../../assets/images/admin.png" alt="" srcset="">
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="container" *ngIf="Admin=='Uye'">
+    <div class="flex-satir" >
+        <div class="flex-sutun" style="flex:2;justify-content: space-between; align-items: center;">
+            <h1> <strong style="color: #4c00ff;">{{adsoyad}}</strong> <strong>, Geleceğe İmzanı At, Bilginle Yarışa Hazır Ol !</strong> </h1>
+            <div >
+                <p style="font-size: 24px;line-height: 2rem;"> En kapsamlı sınav deneyimi için tasarlanmış <strong style="color: #4c00ff;">online</strong> sınav portalımızla, kolay erişim, <strong style="color: #4c00ff;">güvenilirlik</strong> 
+                    ve detaylı sonuçlar bir arada! Sınavlarınızı <strong style="color: #4c00ff;">online</strong>  dünyada <strong style="color: #4c00ff;">başarıya</strong>dönüştürmek için doğru adrestesiniz.</p>
+            </div>
+            <div> 
+                
+            </div>
+        </div>
+        <div class="flex-sutun" style="max-width: 600px;flex:1;">
+            <img src="../../../assets/images/uye.png" alt="" srcset="">
+        </div>
+    </div>
+    
+</div>

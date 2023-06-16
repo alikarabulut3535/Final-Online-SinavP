@@ -1,0 +1,86 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === true"  >
+    <mat-toolbar class="mat-elevation-z4">{{adsoyad}}</mat-toolbar>
+    <mat-nav-list >
+      <a mat-list-item class="renk" [routerLink]="['/']">
+        <button mat-raised-button style="width: 100%;" color="accent">
+          <mat-icon>home</mat-icon>
+          <span>Anasayfa</span>
+        </button>
+        
+      </a>
+      <a mat-list-item class="renk" [routerLink]="['/uye']" *ngIf="Admin=='Admin'">
+        <button mat-raised-button style="width: 100%;" color="accent">
+          <mat-icon>group</mat-icon>
+          <span>Üyeler</span>
+        </button>
+        
+      </a>
+      <a mat-list-item class="renk" [routerLink]="['/ders']" *ngIf="Admin=='Admin'"><button mat-raised-button style="width: 100%;"
+          color="accent">
+          <mat-icon>article</mat-icon>
+          <span>Dersler</span>
+        </button></a>
+      <a mat-list-item class="renk" [routerLink]="['/sinav']" *ngIf="Admin=='Admin'">
+        <button mat-raised-button style="width: 100%;" color="accent">
+          <mat-icon>description</mat-icon>
+          <span>Sınavlar</span>
+        </button>
+      </a>
+      <a mat-list-item class="renk" [routerLink]="['/derslerim']" *ngIf="Admin=='Uye'"><button mat-raised-button style="width: 100%;"
+        color="accent">
+        <mat-icon>article</mat-icon>
+        <span>Derslerim</span>
+      </button></a>
+      <a mat-list-item class="renk" [routerLink]="['/sinavlarim']" *ngIf="Admin=='Uye'">
+        <button mat-raised-button style="width: 100%;" color="accent">
+          <mat-icon>description</mat-icon>
+          <span>Sınavlarım</span>
+        </button>
+      </a>
+      <a mat-list-item class="renk" [routerLink]="['/sonuclarim']" *ngIf="Admin=='Uye'">
+        <button mat-raised-button style="width: 100%;" color="accent">
+          <mat-icon>insert_chart_outlined</mat-icon>
+          <span>Sonuçlarım</span>
+        </button>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="warn"  class="mat-elevation-z8">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button
+        (click)="apiServis.OturumKontrol() ? drawer.toggle() : null">
+        <!-- *ngIf="isHandset$ | async" -->
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="example-spacer"></span>
+      <span>Karabulut Online Sınav Portalı</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="setMenu">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <mat-menu #setMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/login']" *ngIf="!apiServis.OturumKontrol()">
+          <mat-icon color="primary">login</mat-icon>
+          <span>Oturum Aç</span>
+        </button>
+        <button mat-menu-item (click)="OturumKapat()" *ngIf="apiServis.OturumKontrol()">
+          <mat-icon color="warn">logout</mat-icon>
+          <span>Oturumu Kapat</span>
+        </button>
+        <!-- <button mat-menu-item [matMenuTriggerFor]="altMenu">Item 2</button> -->
+      </mat-menu>
+      <!-- <mat-menu #altMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu> -->
+    </mat-toolbar>
+
+
+    <!-- Add Content Here -->
+    <div class="content-body">
+    <router-outlet></router-outlet>
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

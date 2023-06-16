@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <span>{{dialogBaslik}}</span>
+</mat-toolbar>
+
+<div class="container">
+  <form [formGroup]="frm">
+    <!--
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Soru</mat-label>
+      <input matInput placeholder="Sorunuzu Giriniz..." name="soruText" formControlName="soruText" required type="text">
+    </mat-form-field>
+    -->
+    <mat-form-field  appearance="outline" class="example-full-width"style="width: 100%;" >
+      <mat-label>Seçenek</mat-label>
+      <textarea matInput placeholder="Seçeneği Giriniz..." name="secenekText" formControlName="secenekText" required type="text" ></textarea>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" style="display: none;">
+      <mat-label>Soru</mat-label>
+      <input matInput placeholder="Soru" name="secSoruId" formControlName="secSoruId" required type="number">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button color="accent" (click)="dialogRef.close(frm.value)" [disabled]="frm.invalid">Kaydet</button>
+  <!-- <button mat-raised-button color="warn" (click)="Sil()" *ngIf="data.islem=='duzenle'">Sil</button> -->
+  <button mat-raised-button color="primary" (click)="dialogRef.close()">İptal</button>
+</div>

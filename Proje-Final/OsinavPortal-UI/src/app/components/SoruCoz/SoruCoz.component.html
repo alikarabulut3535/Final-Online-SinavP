@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="flex-satir" style="justify-content: space-around;">
+    <div class="sinav">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div class="flex-satir" style="justify-content: space-between; width: 100%;">
+            <div>
+              <mat-card-title>Sorular</mat-card-title>
+              <mat-card-subtitle>{{secSinav.sinavAdi}}</mat-card-subtitle>
+            </div>
+            <div style="margin: 0;"> 
+              <h2 [style]="sayacRenk">{{ remainingMinutes }}:{{ remainingSeconds }}</h2>
+            </div>
+          </div>
+
+        </mat-card-header>
+        <mat-card-content>
+          <mat-radio-group>
+          <div class="sorular" style="margin-top: 3%;">
+            <div class="soru" *ngFor="let soru of sorular"  [style]="soru.bayrak?'background-color: #683ab72d;':'background-color: #f443362d;'" >
+              <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <div style="display: flex; justify-content: center;align-items: center;">
+                  <h2 style="padding-top: 100%;margin:0"><strong>{{sorular.indexOf(soru)+1}}</strong></h2>
+                </div>
+
+                
+                <div>
+                  
+                    <mat-radio-button [value]="soru" color="primary" [checked]="soruNumarasi==sorular.indexOf(soru)" (change)="RadioRenkDegistir(soru)" (click)="soruNumarasi=sorular.indexOf(soru)"></mat-radio-button>
+                    
+                  
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions>
+          
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    
+    <mat-card class="example-card">
+      <mat-card-header>
+
+        <mat-card-title>{{soruNumarasi + 1}}. Soru : {{sorular[soruNumarasi].soruText}}</mat-card-title>
+
+      </mat-card-header>
+      <hr>
+      <mat-card-content style="height: 100%;">
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+          [(ngModel)]="sorular[soruNumarasi].dogruSec" (change)="RadioRenkDegistir(sorular[soruNumarasi])">
+          <mat-radio-button class="example-radio-button" *ngFor="let sec of sorular[soruNumarasi].secenekler"
+            [value]="sec" [color]="sorular[soruNumarasi].renk" >
+
+
+            <span>{{sec.secenekText}}</span>
+
+          </mat-radio-button>
+
+          <div></div>
+
+        </mat-radio-group>
+      </mat-card-content>
+      
+      <hr>
+      <mat-card-actions>
+
+        <div class="flex-satir" style="justify-content: space-between; width: 100%;">
+
+          <button mat-raised-button (click)="SoruNumarasiAzalt()" [disabled]="soruNumarasi==0">Geri</button>
+          <div class="flex-satir">
+            <button mat-raised-button color="accent" *ngIf="!sorular[soruNumarasi].bayrak"
+              (click)="Kaydet(sorular[soruNumarasi].dogruSec,sorular[soruNumarasi])"
+              [disabled]="!sorular[soruNumarasi].dogruSec">kaydet</button>
+            <button mat-raised-button color="accent" *ngIf="sorular[soruNumarasi].bayrak"
+              (click)="Degistir(sorular[soruNumarasi].dogruSec,sorular[soruNumarasi])">Değiştir</button>
+            <button mat-raised-button color="warn" [disabled]="soruNumarasi!=sorular.length-1"
+              (click)="Sinavibitir(false)">Bitir</button>
+          </div>
+          <button mat-raised-button (click)="SoruNumarasiArttir()"
+            [disabled]="soruNumarasi==sorular.length-1">İleri</button>
+        </div>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

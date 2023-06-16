@@ -1,0 +1,58 @@
+<!-- <div class="container">
+  <h2>Oturum Aç</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Mail</mat-label>
+    <input matInput placeholder="Mail" type="text" #kadi>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Parola</mat-label>
+    <input matInput placeholder="Parola" type="password" #parola>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="OturumAc(kadi.value,parola.value)">Oturum Aç</button>
+</div> -->
+
+<mat-card>
+  <mat-card-content>
+    <div class="header">
+      <h2>Oturum Açın </h2>
+    </div>
+    <form name="loginForm" [formGroup]="loginForm">
+      <div class="emailInput" style="margin-bottom: 2%;" >
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Mail</mat-label>
+          <input
+            formControlName="email"
+            matInput
+            placeholder="Kullanıcı Adınızı Giriniz" required #mail
+          />
+          <mat-error *ngIf="!loginForm.controls['email'].valid">
+              <strong>Uyarı :</strong> Lütfen geçerli bir mail adresi giriniz.
+            </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div style="margin-bottom: 2%;">
+        
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Şifre</mat-label>
+          <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required #parola/>
+          <button  mat-icon-button matSuffix (click)="hide = !hide"  color="primary">
+          <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+      </button>
+      <mat-error *ngIf="!loginForm.controls['password'].valid">
+        <strong>Uyarı :</strong> Lütfen geçerli bir şifre giriniz.
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <button mat-flat-button color="primary" style="margin-bottom: 2%;" (click)="OturumAc(mail.value,parola.value)" >Giriş Yap</button>
+    </form>
+
+    <div class="button-row" >
+      <p>Kullanıcı Adı ve Şifrenizi Kimse ile paylaşmayınız!</p>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+  margin: 20px 10px 10px 20px;
+  padding: 0% 5%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mdc-button {
+  margin-right: 20px;
+}
+
+.flex-satir {
+  display: flex;
+  justify-content: center;
+
+}
+
+.flex-satir-1-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-satir>* {
+  margin-right: 5%;
+}
+
+.flex-sutun {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+}
+
+.asagiya-it {
+  margin-right: 4%;
+  margin-bottom: 10%;
+
+}
+
+.asagiya-it>* {
+  margin: 5% 0%;
+}
+

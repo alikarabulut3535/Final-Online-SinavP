@@ -1,0 +1,28 @@
+.example-card {
+    border-radius: 1rem;
+    display: flex;
+    flex: 3;
+}
+.sorular{
+    display: flex;
+    margin: 0;
+    width: 33%;
+}
+
+.sorular .soru{
+    
+    background-color: #ffd6401f;
+    background-color: #f443362d;
+    background-color: #683ab72d;
+    
+    border-radius: 10px;
+    border-style: 1px;
+    
+    
+    margin: 5%;
+    width: 100%;
+    
+    
+    
+    
+}

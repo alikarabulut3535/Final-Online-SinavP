@@ -1,0 +1,66 @@
+<div class="container">&nbsp;
+  <div class="flex-satir">
+    <h1><strong>Dersler</strong></h1>
+  </div>&nbsp;
+    <div class="flex-satir">
+    
+   
+    <!-- Üye ekleme butonu mat-fab -->
+    <button mat-fab matTooltip="Ders Ekle" color="primary" (click)="Ekle()">
+      <mat-icon aria-label="label">add</mat-icon>
+    </button>
+  
+    <!-- Üye arama inputu mat-form-field -->
+    <mat-form-field appearance="outline" style="width: 80%;" >
+      <input matInput placeholder="Aranacak Bir Dersi Giriniz..." (keyup)="Filtrele($event)">
+    </mat-form-field>
+  </div>
+
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="dersKodu">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Kodu
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersKodu}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dersAdi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Adı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersAdi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dersKredi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Kredi
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersKredi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dersOgrSayisi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Üye Sayısı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.dersOgrSayisi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef > İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+        <button mat-icon-button matTooltip="Üyeleri Listele" [routerLink]="['/uyelistele',kayit.dersId]">
+          <mat-icon aria-label="label" color="primary">groups</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Sınavları Listele" [routerLink]="['/sinav',kayit.dersId]">
+          <mat-icon aria-label="label" color="primary">description</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Dersi Düzenle" (click)="Duzenle(kayit)">
+          <mat-icon aria-label="label" color="accent">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Dersi Sil" (click)="Sil(kayit)">
+          <mat-icon aria-label="label" color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+  
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="mat-elevation-z4"></mat-paginator> 
+</div>

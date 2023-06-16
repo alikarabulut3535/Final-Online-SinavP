@@ -1,0 +1,77 @@
+<div class="container">&nbsp;
+  <div class="flex-satir">
+    <h1><strong>Üyeler</strong></h1>
+  </div> &nbsp;
+  <div class="flex-satir">
+
+
+    <!-- Üye ekleme butonu mat-fab -->
+    <button mat-fab matTooltip="Öğrenci Ekle" color="warn" (click)="Ekle()">
+      <mat-icon aria-label="label">person_add</mat-icon>
+    </button>
+
+    <!-- Üye arama inputu mat-form-field -->
+    <mat-form-field appearance="outline" style="width: 80%;">
+      <input matInput placeholder="Aranacak Bir Değer Giriniz..." (keyup)="Filtrele($event)">
+    </mat-form-field>
+  </div>
+
+
+
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="adsoyad">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ad Soyad
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.adsoyad}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mail">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Mail
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.mail}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="parola">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Parola
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.parola}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="admin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Admin
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+        <a mat-fab extended style="width: 50%;height: 60%;background-color: #ff0000;" *ngIf="kayit.admin==1">
+          Admin
+        </a>
+        <a mat-fab extended style="width: 50%;height: 50%;background-color: #2cd6a3;" *ngIf="kayit.admin==0">
+          Üye
+        </a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="uyeDersSayisi">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Ders Sayısı
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit"> {{kayit.uyeDersSayisi}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="islemler">
+      <mat-header-cell *matHeaderCellDef> İşlemler
+      </mat-header-cell>
+      <mat-cell *matCellDef="let kayit">
+        <button mat-icon-button matTooltip="Dersleri Listele" [routerLink]="['/derslistele',kayit.uyeId]">
+          <mat-icon aria-label="label" color="primary">article</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Üye Düzenle" (click)="Duzenle(kayit)">
+          <mat-icon aria-label="label" color="accent">edit</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Üye Sil" (click)="Sil(kayit)">
+          <mat-icon aria-label="label" color="warn">delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <!-- press ctrl + space to add more column snippet or delete this line -->
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="mat-elevation-z4"></mat-paginator>
+</div>

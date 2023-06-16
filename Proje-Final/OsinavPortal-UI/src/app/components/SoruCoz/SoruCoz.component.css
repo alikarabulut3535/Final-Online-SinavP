@@ -1,0 +1,70 @@
+.example-card {
+    border-radius: 1rem;
+    display: flex;
+    flex: 3;
+}
+
+.example-action-buttons {
+    padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.example-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
+    margin-left: 8px;
+}
+
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+}
+
+.example-radio-button {
+    margin: 5px;
+}
+.sinav{
+    display: flex;
+    flex-direction: column;
+    
+    align-items: flex-start;
+    
+    flex: 1;
+}
+.sinav > .example-card{
+    width: 100%;
+}
+.sorular{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.sinav .example-card .sorular .soru{
+    background-color: #f443362d;
+    background-color: #ffd6401f;
+    
+    
+    border-radius: 10px;
+    border-style: 1px;
+    display: flex;
+    
+    margin: 2% 5%;
+    width: 23%;
+    
+    
+    align-items: center;
+    justify-content: center;
+}
+hr{
+    width: 95%;
+    margin: 2%;
+}
